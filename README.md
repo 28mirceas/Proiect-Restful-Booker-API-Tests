@@ -98,7 +98,7 @@ Cookie: token=<auth_token>
 pip install -r requirements.txt
 ```
 
-### 2Rulare toate testele
+### Rulare toate testele
 ```bash
 pytest -v
 ```

@@ -1,19 +1,19 @@
-# Restful Booker API – Testare Automată (Python)
+# Restful Booker API – Automated Testing (Python)
 
-## Prezentare proiect
-Acest proiect conține **teste automate de tip API** pentru aplicația **Restful Booker** (public demo API).  
-Testele sunt implementate în **Python**, folosind **Pytest** și **Requests**, și acoperă **scenarii pozitive, negative și edge cases**.
+## Project Overview
+This project contains automated API tests for the Restful Booker application (public demo API).
+The tests are implemented in Python, using Pytest and Requests, and cover positive, negative, and edge case scenarios.
 
-Scopul proiectului este de a demonstra:
-- abilități de **API Automation Testing**
-- structură clară și ușor de întreținut
-- gestionarea autentificării prin token
-- testare negativă și identificare de defecte reale
-- bune practici QA
+The goal of this project is to demonstrate:
+- API Automation Testing skills
+- Clear and maintainable project structure
+- Token-based authentication handling
+- Negative testing and real defect identification
+- QA best practices
 
 ---
 
-## Tehnologii utilizate
+## Technologies Used
 - Python 3
 - Pytest
 - Requests
@@ -23,12 +23,12 @@ Scopul proiectului este de a demonstra:
 
 ---
 
-## API testat
+## Tested API
 - **Base URL:** `https://restful-booker.herokuapp.com`
 
 ---
 
-## Structura proiectului
+## Project Structure
 ```
 Proiect-Restful-Booker-API-Tests/
 │
@@ -47,70 +47,70 @@ Proiect-Restful-Booker-API-Tests/
 
 ---
 
-## Autentificare
-Autentificarea se face prin endpoint-ul:
+## Authentication
+Authentication is performed using the endpoint:
 ```
 POST /auth
 ```
 
-Token-ul este:
-- generat o singură dată pe sesiune folosind un **fixture Pytest**
-- transmis în request-uri prin header:
+The token is:
+- generated once per session using a Pytest fixture
+- sent in requests via header:
 ```
 Cookie: token=<auth_token>
 ```
 
 ---
 
-## Acoperire teste
+## Test Coverage
 
-### Teste pozitive
-- Obținere listă booking IDs
-- Creare booking
-- Obținere booking după ID
+### Positive Tests
+- Retrieve booking IDs list
+- Create booking
+- Retrieve booking by ID
 - Update booking (PUT)
 - Partial update booking (PATCH)
-- Ștergere booking (DELETE)
+- Delete booking (DELETE)
 
-### Teste negative
-- Get booking cu ID inexistent → `404`
-- Create booking cu body gol → **BUG (500 în loc de 400)**
-- Create booking fără câmpuri obligatorii → **BUG (500 în loc de 400)**
-- Update booking fără autentificare → `403`
-- Delete booking fără autentificare → `403`
-- Delete booking inexistent → `404 / 405`
+### Negative Tests
+- Get booking with non-existing ID → 404
+- Create booking with empty body → BUG (500 instead of 400)
+- Create booking without mandatory fields → BUG (500 instead of 400)
+- Update booking without authentication → 403
+- Delete booking without authentication → 403
+- Delete non-existing booking → 404 / 405
 
 ---
 
-## Defecte identificate (Known Issues)
+## Identified Defects (Known Issues)
 
-| Scenariu | Răspuns actual | Răspuns așteptat |
+| Scenario | Actual Response | Expected Response |
 |--------|---------------|-----------------|
-| Creare booking cu body gol | 500 Internal Server Error | 400 Bad Request |
-| Lipsă câmpuri obligatorii | 500 Internal Server Error | 400 Bad Request |
+| Create booking with empty body | 500 Internal Server Error | 400 Bad Request |
+| Missing mandatory fields | 500 Internal Server Error | 400 Bad Request |
 
 ---
 
-## ▶Rulare teste
+## ▶Test Execution
 
-### Instalare dependențe
+### Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### Rulare toate testele
+### Run All Tests
 ```bash
 pytest -v
 ```
 
 ---
 
-## Colecție Postman
-Fișier inclus:
+## Postman Collection
+Included file:
 ```
 Restful_Booker.postman_collection.json
 ```
 ---
 
-## Autor
+## Author
 **QA Tester**
